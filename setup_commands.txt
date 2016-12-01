@@ -1,0 +1,26 @@
+# Enable access to the MicroSD card
+opkg update
+opkg install block-mount kmod-fs-ext4 kmod-usb-storage-extras e2fsprogs fdisk
+
+# ONLY DO THIS IF CARD IS BLANK
+# mkfs.ext4 /dev/mmcblk0p1
+
+# Detect the SD card and create  /etc/config/fstab
+block detect > /etc/config/fstab
+
+# edit /etc/config/fstab change option enabled to '1'
+vi /etc/config/fstab
+
+# This will mount the SD card to /mnt/mmcblk0p1
+block mount
+
+# Enable Serial interface to arduino
+uci set yunbridge.config.disabled='0'
+uci commit
+reboot
+
+# Add ssh keys
+cd /etc/dropbear
+touch authorized_keys
+chmod 0600 authorized_keys
+vi authorized_keys
