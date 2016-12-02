@@ -8,7 +8,7 @@
 #define LED_TYPE   WS2811
 #define COLOR_ORDER   GRB
 #define DATA_PIN        11
-#define BRIGHTNESS  256
+#define BRIGHTNESS  255
 
 // Adding a control pin to allow the lights to be toggled on and off
 // through setting a GPIO pin on the LinkIt 7688 Duo
@@ -90,10 +90,10 @@ CRGBArray<NUM_LEDS> leds;
 // Overall twinkle density.
 // 0 (NONE lit) to 8 (ALL lit at once).
 // Default is 5.
-#define TWINKLE_DENSITY 6
+#define TWINKLE_DENSITY 7
 
 // How often to change color palettes.
-#define SECONDS_PER_PALETTE  10
+#define SECONDS_PER_PALETTE 10
 // Also: toward the bottom of the file is an array
 // called "ActivePaletteList" which controls which color
 // palettes are used; you can add or remove color palettes
