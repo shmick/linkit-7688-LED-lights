@@ -1,6 +1,6 @@
 # TwinkleFox-Bright
 
-### This is a slighly modified version of Mark Kriegsman's [TwinkleFox (2015)](https://gist.github.com/kriegsman/756ea6dcae8e30845b5a) code.
+#### This is a slighly modified version of Mark Kriegsman's [TwinkleFox (2015)](https://gist.github.com/kriegsman/756ea6dcae8e30845b5a) code.
 
 #### Modifications :
 
