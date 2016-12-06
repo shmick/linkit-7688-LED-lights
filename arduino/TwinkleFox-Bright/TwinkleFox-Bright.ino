@@ -12,13 +12,8 @@
 
 // Adding a control pin to allow the lights to be toggled on and off
 // through setting a GPIO pin on the LinkIt 7688 Duo
-
 #define ControlPin 7 // On the 7688 Duo, Digital 7 = GPIO 0
 int ControlPinVal = 0; // Set the default value to 0
-
-// Setup a millis() timer for Serial output
-unsigned long previousMillis = 0;        // will store last time LED was updated
-const long interval = 1000;           // interval at which to blink (milliseconds)
 
 //  TwinkleFOX: Twinkling 'holiday' lights that fade in and out.
 //  Colors are chosen from a palette; a few palettes are provided.
@@ -85,12 +80,12 @@ CRGBArray<NUM_LEDS> leds;
 // Overall twinkle speed.
 // 0 (VERY slow) to 8 (VERY fast).
 // 4, 5, and 6 are recommended, default is 4.
-#define TWINKLE_SPEED 4
+#define TWINKLE_SPEED 5
 
 // Overall twinkle density.
 // 0 (NONE lit) to 8 (ALL lit at once).
 // Default is 5.
-#define TWINKLE_DENSITY 7
+#define TWINKLE_DENSITY 6
 
 // How often to change color palettes.
 #define SECONDS_PER_PALETTE 10
@@ -152,28 +147,16 @@ void loop()
   }
 
   else {
-    AllOff();
+    fadeToBlack();
   }
 
   FastLED.show();
 
-  // Use a millis() timer to output serial data without blocking
-
-  if (currentMillis - previousMillis >= interval) {
-    previousMillis = currentMillis;
-    Serial1.print("ControlPin");
-    Serial1.print("\t");
-    Serial1.println(ControlPinVal);
-    Serial1.println();
-  }
 }
 
-// This function turns all of the pixels off and will only
-// be run when ControlPinVal = 1
-// This value is toggled via a python script
-void AllOff()
+void fadeToBlack()
 {
-  fill_solid(leds, NUM_LEDS, CRGB::Black);
+  fadeToBlackBy(leds, NUM_LEDS, 1);
 }
 
 //  This function loops over each pixel, calculates the
