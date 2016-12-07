@@ -24,3 +24,7 @@ cd /etc/dropbear
 touch authorized_keys
 chmod 0600 authorized_keys
 vi authorized_keys
+
+# enable crond
+/etc/init.d/cron start
+/etc/init.d/cron enable
