@@ -15,7 +15,7 @@ vi /etc/config/fstab
 block mount
 
 # Set timezone to Toronto
-echo EST5EDT,M3.2.0,M11.1.0 > /etc/TZ
+uci set system.@system[0].timezone='EST5EDT,M3.2.0,M11.1.0'
 
 # Enable Serial interface to arduino
 uci set yunbridge.config.disabled='0'
