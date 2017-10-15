@@ -1,6 +1,5 @@
 # Enable access to the MicroSD card
-opkg update
-opkg install block-mount kmod-fs-ext4 kmod-usb-storage-extras e2fsprogs fdisk
+opkg update && opkg install block-mount kmod-fs-ext4 kmod-usb-storage-extras e2fsprogs fdisk
 
 # ONLY DO THIS IF CARD IS BLANK
 # mkfs.ext4 /dev/mmcblk0p1
