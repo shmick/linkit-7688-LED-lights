@@ -17,16 +17,12 @@ block mount
 uci set system.@system[0].timezone='EST5EDT,M3.2.0,M11.1.0'
 
 # Enable Serial interface to arduino
-uci set yunbridge.config.disabled='0'
-uci commit
+uci set yunbridge.config.disabled='0' && uci commit
 reboot
 
 # Add ssh keys
-cd /etc/dropbear
-touch authorized_keys
-chmod 0600 authorized_keys
+cd /etc/dropbear && touch authorized_keys && chmod 0600 authorized_keys
 vi authorized_keys
 
 # enable crond
-/etc/init.d/cron start
-/etc/init.d/cron enable
+/etc/init.d/cron start && /etc/init.d/cron enable
