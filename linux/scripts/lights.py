@@ -5,9 +5,19 @@ import sys
 command = sys.argv[1]
 
 D7 = mraa.Gpio(0)
-D7.dir(mraa.DIR_OUT)
 
 if command == 'on':
- D7.write(0)
+ print "Turning the lights %s" % (command)
+ D7.dir(mraa.DIR_OUT_LOW)
+
 elif command == 'off':
- D7.write(1)
+ print "Turning the lights %s" % (command)
+ D7.dir(mraa.DIR_OUT_HIGH)
+
+elif command == 'status':
+ PinStatus = D7.read()
+ print "%s" % (PinStatus)
+ if PinStatus == 0:
+  print "The lights should be on"
+ elif PinStatus == 1:
+  print "The lights should be off"
